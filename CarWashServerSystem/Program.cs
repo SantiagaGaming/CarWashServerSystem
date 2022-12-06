@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using CarWashServerSystem.Models;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices.ComTypes;
+using System.Net.NetworkInformation;
 
 namespace CarWashServerSystem
 {
@@ -15,7 +16,7 @@ namespace CarWashServerSystem
     {
         static void Main(string[] args)
         {
-            const string ip = "127.0.0.1";
+            string ip = IPAddress.Any.ToString(); 
             const int port = 8080;
             JsonConverter jsonConverter = new JsonConverter();
             var tcpEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
@@ -23,6 +24,7 @@ namespace CarWashServerSystem
             tcpSocket.Bind(tcpEndPoint);
             tcpSocket.Listen(5);
             Console.WriteLine("Server Start.");
+
             while (true)
             {
                 var listener = tcpSocket.Accept();
@@ -60,5 +62,5 @@ namespace CarWashServerSystem
 
             }
         }
-        }
+    }
 }
