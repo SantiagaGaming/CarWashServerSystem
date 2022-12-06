@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace CarWashServerSystem.Models
 {
         [Serializable]
-        public class T
+        public class Client
         {
             public int Id { get; set; }
             public string CarNumber { get; set; }

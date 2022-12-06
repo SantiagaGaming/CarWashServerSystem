@@ -11,13 +11,13 @@ namespace CarWashServerSystem
 {
     public class JsonConverter
     {
-        private List<T> _objects = new List<T>();
+        private List<Client> _objects = new List<Client>();
         private string _path = "Data/database.json";
 
-        public void AddObject(T obj)
+        public void AddObject(Client obj)
         {
             UpdateRepo();
-            T temp = _objects.FirstOrDefault(i => i.Id == obj.Id);
+            Client temp = _objects.FirstOrDefault(i => i.Id == obj.Id);
             if(temp ==null)
                 _objects.Add(obj);
             else
@@ -32,13 +32,13 @@ namespace CarWashServerSystem
         private void UpdateRepo()
         {
             var jsonFile = File.ReadAllText(_path);
-            if (JsonConvert.DeserializeObject<T[]>(jsonFile) != null)
-                _objects = JsonConvert.DeserializeObject<T[]>(jsonFile).ToList();
+            if (JsonConvert.DeserializeObject<Client[]>(jsonFile) != null)
+                _objects = JsonConvert.DeserializeObject<Client[]>(jsonFile).ToList();
         }
         public void DeleteObject(int number)
         {
             UpdateRepo();
-            T obj = _objects.FirstOrDefault(c => c.Id == number);
+            Client obj = _objects.FirstOrDefault(c => c.Id == number);
             if (obj != null)
                 _objects.Remove(obj);
             string jsonFile = _path;

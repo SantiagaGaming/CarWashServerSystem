@@ -49,7 +49,7 @@ namespace CarWashServerSystem
                 }
                 else
                 {
-                    T tempClient = JsonConvert.DeserializeObject<T>(data.ToString());
+                    Client tempClient = JsonConvert.DeserializeObject<Client>(data.ToString());
                     if (tempClient != null)
                     Console.WriteLine("New Client Added with CarNumber: " + tempClient.CarNumber);
                     jsonConverter.AddObject(tempClient);
